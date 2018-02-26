@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="light">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="killMyself()" class="back-btn">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="save()" class="save-btn" color="primary">
+        保存
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content ngClass="text-input-modal">
+  <div class="input-container">
+    <textarea class="weui-textarea" name="myTextArea" id="myTextArea" rows="5" maxlength="2000"
+              weui-textarea [(ngModel)]="textContent"></textarea>
+  </div>
+</ion-content>

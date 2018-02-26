@@ -1,0 +1,67 @@
+<!--
+  Generated template for the CustomerAddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>添加顾客</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="customer-add">
+  <div class="create-item">
+    <span class="required-edit item-name">名称</span>
+    <span class="item-operation" (click)="selectText('realName')">
+      <span *ngIf="customer.realName">{{customer.realName}}</span>
+      <span *ngIf="!customer.realName">请填写
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </span>
+
+    </span>
+  </div>
+  <div class="create-item">
+    <span class="required-edit item-name">手机号</span>
+    <span class="item-operation" (click)="selectText('phoneNum')">
+      <span *ngIf="customer.phoneNum">{{customer.phoneNum}}</span>
+      <span *ngIf="!customer.phoneNum">请填写
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </span>
+    </span>
+  </div>
+  <div class="create-item">
+    <span class="required-edit item-name">常用地址1</span>
+    <span class="item-operation" (click)="selectText('0')">
+      <span *ngIf="curAddresss[0]">{{curAddresss[0]}}</span>
+      <span *ngIf="!curAddresss[0]">请填写
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </span>
+    </span>
+  </div>
+  <div class="create-item">
+    <span class="item-name">常用地址2</span>
+    <span class="item-operation" (click)="selectText('1')">
+      <span *ngIf="curAddresss[1]">{{curAddresss[1]}}</span>
+      <span *ngIf="!curAddresss[1]">请填写
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </span>
+    </span>
+  </div>
+  <div class="create-item">
+    <span class="item-name">常用地址3</span>
+    <span class="item-operation" (click)="selectText('2')">
+      <span *ngIf="curAddresss[2]">{{curAddresss[2]}}</span>
+      <span *ngIf="!curAddresss[2]">请填写
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </span>
+    </span>
+  </div>
+</ion-content>
+<ion-footer>
+  <button block ion-button (click)="save()">保存</button>
+</ion-footer>
+

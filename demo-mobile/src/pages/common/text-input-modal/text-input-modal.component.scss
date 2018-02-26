@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+ion-navbar .icon-chevron-left {
+  font-size: 20px !important;
+}
+
+.text-input-modal {
+  background-color: #f3f6f8;
+  .scroll-content{
+    overflow: auto;
+  }
+  .input-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.save-btn {
+  color: #ccc;
+}
