@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
-import { CustomerAddPage } from './customer-add';
+import { SoldAddPage } from './sold-add';
 import { CommonCompoentModule } from '../../common/common-component.module';
 
 @NgModule({
   declarations: [
-    CustomerAddPage
+    SoldAddPage
   ],
   entryComponents:[
-    CustomerAddPage
+    SoldAddPage
   ],
   imports: [
-    IonicPageModule.forChild(CustomerAddPage),
+    IonicPageModule.forChild(SoldAddPage),
     CommonCompoentModule
   ],
-  exports: [CustomerAddPage]
+  exports: [SoldAddPage]
 })
-export class CustomerAddPageModule {}
+export class SoldAddPageModule {}

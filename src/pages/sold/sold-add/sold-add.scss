@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.customer-add {
+.sold-add {
     .create-item {
         width: 100%;
         display: flex;
@@ -12,6 +12,9 @@
         .item-operation {
             width: 65%;
             text-align: right;
+            ion-toggle {
+                float: right;
+            }
         }
         .required-edit {
             &:before {
@@ -22,3 +25,4 @@
     }
 
 }
+

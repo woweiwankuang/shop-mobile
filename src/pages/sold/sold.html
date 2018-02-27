@@ -7,12 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>sold</ion-title>
+    <ion-title>销售</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="sold">
+    <div class="btn-tab" (click)="add()">
+        <ion-icon name="add-circle"></ion-icon>
+    </div>
 
+    <div class="btn-tab" (click)="search()">
+        <ion-icon name="search"></ion-icon>
+    </div>
 </ion-content>

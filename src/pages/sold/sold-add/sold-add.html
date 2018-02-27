@@ -1,0 +1,67 @@
+<!--
+  Generated template for the SoldAddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>sold-add</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="sold-add">
+  <div class="create-item">
+    <span class="required-edit item-name">产品名称</span>
+    <span class="item-operation" (click)="selectText('productName')">{{soldRec.productName?soldRec.productName:'请输入'}}
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+  <div class="create-item">
+    <span class="required-edit item-name">产品数量</span>
+    <span class="item-operation" (click)="inputNumber('num')">{{soldRec.num?soldRec.num:'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+  <div class="create-item">
+    <span class="required-edit item-name">总成本</span>
+    <span class="item-operation" (click)="inputNumber('cost')">{{soldRec.cost?soldRec.cost:'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="required-edit item-name">总售价</span>
+    <span class="item-operation" (click)="inputNumber('price')">{{soldRec.price?soldRec.price:'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="required-edit item-name">邮费</span>
+    <span class="item-operation" (click)="inputNumber('postage')">{{soldRec.postage?soldRec.postage:'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="required-edit item-name">卖出时间</span>
+    <span class="item-operation" (click)="selectTime()">{{soldRec.soldTime?(soldRec.soldTime|date:'yyyy-MM-dd'):'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="required-edit item-name">是否已寄出</span>
+    <div class="item-operation">
+      <ion-toggle [(ngModel)]="soldRec.isSend"></ion-toggle>
+    </div>
+  </div>
+
+</ion-content>
+<ion-footer>
+    <button block ion-button (click)="save()">保存</button>
+  </ion-footer>

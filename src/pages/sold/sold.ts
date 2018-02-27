@@ -21,8 +21,12 @@ export class SoldPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SoldPage');
+  add(){
+    this.navCtrl.push('sold-add');
+  }
+
+  search(){
+    this.navCtrl.push('sold-search');
   }
 
 }
