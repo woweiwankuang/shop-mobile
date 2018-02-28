@@ -44,7 +44,7 @@ export class SoldRec extends AbstractEntity {
   /**
    * 产品数量
    */
-  @JsonProperty('产品数量', Number)
+  @JsonProperty('num', Number)
   产品数量: number = undefined;
 
   /**

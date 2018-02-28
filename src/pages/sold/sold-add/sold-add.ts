@@ -5,7 +5,11 @@ import { PickerService } from 'ngx-weui';
 import { SoldRec } from '../../../services/common/model/soldRec';
 import { TextInputModalComponent } from '../../common/text-input-modal/text-input-modal.component';
 import { NumberInputModalComponent } from '../../common/number-input-modal/number-input-modal.component';
+import { CustomerListComponent } from '../../customer/customer-list/customer-list';
+import { SelectListModalComponent } from '../../common/select-list/select-list';
 import { PickerOption } from '../../../services/common/model/picker-option/picker-option';
+import { Customer } from '../../../services/common/model/customer';
+import { SkyToastService } from '../../../services/common/toast/toast.service';
 
 /**
  * Generated class for the SoldAddPage page.
@@ -26,9 +30,11 @@ export class SoldAddPage implements OnInit {
 
   soldRec: SoldRec = new SoldRec();
   pickerOption: PickerOption;
+  selectedCustomer: Customer;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalController: ModalController,
-    private pickerService: PickerService) {
+    private pickerService: PickerService,private toast: SkyToastService) {
   }
 
   ngOnInit() {
@@ -86,6 +92,52 @@ export class SoldAddPage implements OnInit {
       );
   }
 
+  /** 
+   * 选择顾客
+  */
+  selectCustomer() {
+    const customerSelectModal = this.modalController.create(CustomerListComponent, {
+
+    }, {
+        showBackdrop: true,
+        enableBackdropDismiss: false
+      });
+    customerSelectModal.onDidDismiss(data => {
+      if (data) {
+        this.soldRec.customerId = data.id;
+        this.selectedCustomer = data;
+        console.log(this.selectedCustomer);
+        
+      }
+    }
+    );
+    customerSelectModal.present();
+  }
+
+  /**
+   * 选择地址
+   */
+  selectAddress(){
+    
+    if(!this.selectedCustomer){
+      this.toast.show('请先选择顾客');
+      return;
+    }
+
+    const addressSelectModal = this.modalController.create(SelectListModalComponent, {
+      items: this.selectedCustomer.addresss
+    });
+    addressSelectModal.onDidDismiss(data => {
+      if (data) {
+        this.soldRec.address = data;
+      }
+    });
+    addressSelectModal.present();
+  }
+
+  /**
+   * 保存
+   */
   save(){
     
   }

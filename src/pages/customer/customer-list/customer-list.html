@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar hideBackButton="true" color="light">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="killMyself()" class="back-btn">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>选择顾客</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content ngClass="text-input-modal" class="customer-list">
+    <div class="search-box">
+        <ion-input type="text" [(ngModel)]="keyword" placeholder="请输入姓名进行查询"></ion-input>
+        <ion-icon name="search" (click)="search()">查询</ion-icon>
+    </div>
+    <ion-list class="customer-list" *ngIf="customers&&customers.length > 0">
+        <button ion-item *ngFor="let customer of customers" (click)="selectCustomer(customer)">
+            {{ customer.realName }}--{{customer.phoneNum}}
+        </button>
+    </ion-list>
+    <p *ngIf="!customers||customers.length === 0">没有内容了~</p>
+</ion-content>

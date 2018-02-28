@@ -55,6 +55,20 @@
   </div>
 
   <div class="create-item">
+    <span class="required-edit item-name">顾客</span>
+    <span class="item-operation" (click)="selectCustomer()">{{soldRec.customerId?selectedCustomer.realName:'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+      <span class="required-edit item-name">地址</span>
+      <span class="item-operation" (click)="selectAddress()">{{soldRec.address?soldRec.address:'请输入'}}
+          <ion-icon name="arrow-dropright"></ion-icon>
+      </span>
+    </div>
+
+  <div class="create-item">
     <span class="required-edit item-name">是否已寄出</span>
     <div class="item-operation">
       <ion-toggle [(ngModel)]="soldRec.isSend"></ion-toggle>

@@ -1,0 +1,5 @@
+<ion-list class="item-list" *ngIf="itemList && itemList.length > 0">
+    <button ion-item *ngFor="let item of itemList" (click)="selectItem(item)">
+        {{ item }}
+    </button>
+</ion-list>

@@ -4,11 +4,15 @@ import { IonicPageModule } from 'ionic-angular';
 
 import { TextInputModalComponent } from './text-input-modal/text-input-modal.component';
 import { NumberInputModalComponent } from './number-input-modal/number-input-modal.component';
+import { CustomerListComponent } from '../customer/customer-list/customer-list';
+import { SelectListModalComponent } from './select-list/select-list';
 
 @NgModule({
     declarations: [
         TextInputModalComponent,
-        NumberInputModalComponent
+        NumberInputModalComponent,
+        CustomerListComponent,
+        SelectListModalComponent
     ],
     imports: [
         IonicPageModule,
@@ -16,11 +20,15 @@ import { NumberInputModalComponent } from './number-input-modal/number-input-mod
     ],
     entryComponents: [
         TextInputModalComponent,
-        NumberInputModalComponent
+        NumberInputModalComponent,
+        CustomerListComponent,
+        SelectListModalComponent
     ],
     exports: [
         TextInputModalComponent,
-        NumberInputModalComponent
+        NumberInputModalComponent,
+        CustomerListComponent,
+        SelectListModalComponent
     ]
 })
 export class CommonCompoentModule { }
