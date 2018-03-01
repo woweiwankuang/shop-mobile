@@ -26,6 +26,7 @@ import { Customer } from '../../../services/common/model/customer';
         this.loading = this.loadingController.create({
           content: '查询中...'
         });
+        this.loading.present();
         this.customerInterface.queryCustomer(this.keyword).subscribe(
           (resp) => {
             this.loading.dismiss();

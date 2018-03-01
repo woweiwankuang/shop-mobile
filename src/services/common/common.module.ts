@@ -4,6 +4,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 
 import { CustomerInterface } from './customer/customer.interface';
 import { SkyToastService } from './toast/toast.service';
+import { SoldInterface } from './sold/sold.interface';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { SkyToastService } from './toast/toast.service';
   ],
   providers: [
     CustomerInterface,
-    SkyToastService
+    SkyToastService,
+    SoldInterface
   ]
 })
 export class SkyCommonModule {

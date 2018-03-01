@@ -41,6 +41,13 @@ export class SoldRec extends AbstractEntity {
   @JsonProperty('postage', Number)
   postage: number = undefined;
 
+
+  /**
+   * 利润
+   */
+  @JsonProperty('profit', Number)
+  profit: number = undefined;
+  
   /**
    * 产品数量
    */
@@ -52,4 +59,10 @@ export class SoldRec extends AbstractEntity {
    */
   @JsonProperty('soldTime', Number)
   soldTime: number = undefined;
+
+  /**
+   * 是否已经寄出
+   */
+  @JsonProperty('isSend', Boolean)
+  isSend: boolean = undefined;
 }

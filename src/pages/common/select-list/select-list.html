@@ -1,5 +1,11 @@
-<ion-list class="item-list" *ngIf="itemList && itemList.length > 0">
-    <button ion-item *ngFor="let item of itemList" (click)="selectItem(item)">
-        {{ item }}
-    </button>
-</ion-list>
+<div class="item-list">
+    <div class="item-header">
+        {{title}}
+    </div>
+    <ion-list class="item-list-content" *ngIf="itemList && itemList.length > 0">
+        <button ion-item *ngFor="let item of itemList" (click)="selectItem(item)">
+            {{ attrName?item[attrName]:item }}
+        </button>
+    </ion-list>
+
+</div>

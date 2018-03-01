@@ -38,6 +38,7 @@ export class CustomerAddPage implements OnInit{
       this.loading = this.loadingController.create({
         content: '查询中...'
       });
+      this.loading.present();
       this.customerInterface.queryCustomerById(this.customerId).subscribe(
         (data) => {
           this.loading.dismiss();
@@ -99,6 +100,7 @@ export class CustomerAddPage implements OnInit{
     this.loading = this.loadingController.create({
       content: '保存中...'
     });
+    this.loading.present();
     if(!this.customerId){
       this.customerInterface.addCustomer(this.customer).subscribe(
         () => {
