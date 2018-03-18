@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { PickerService } from 'ngx-weui';
 
-import { SoldRec } from '../../../services/common/model/soldRec';
+import { SoldRec } from '../../../services/common/model/sold-rec';
 import { TextInputModalComponent } from '../../common/text-input-modal/text-input-modal.component';
 import { NumberInputModalComponent } from '../../common/number-input-modal/number-input-modal.component';
 import { CustomerListComponent } from '../../customer/customer-list/customer-list';
@@ -43,6 +43,23 @@ export class SoldAddPage implements OnInit {
 
   ngOnInit() {
     this.soldRecId = this.navParams.get('soldRecId');
+    if(this.soldRecId){
+      this.loading = this.loadingController.create({
+        content: '查询中...'
+      });
+      this.loading.present();
+      this.soldInterface.querySoldRecById(this.soldRecId).subscribe(
+        (soldRecDTO) => {
+          this.loading.dismiss();
+          this.soldRec = soldRecDTO.soldRec;
+          this.selectedCustomer = soldRecDTO.customer;
+        },
+        () => {
+          this.loading.dismiss();
+          this.toast.show('获取销售信息失败');
+        }
+      );
+    }
   }
 
   /**
@@ -111,8 +128,6 @@ export class SoldAddPage implements OnInit {
       if (data) {
         this.soldRec.customerId = data.id;
         this.selectedCustomer = data;
-        console.log(this.selectedCustomer);
-        
       }
     }
     );

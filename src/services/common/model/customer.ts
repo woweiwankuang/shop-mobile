@@ -28,6 +28,6 @@ export class Customer extends AbstractEntity {
         super();
         this.realName = '';
         this.phoneNum = '';
-        this.addresss = [];
+        this.addresss = [''];
     }
 }

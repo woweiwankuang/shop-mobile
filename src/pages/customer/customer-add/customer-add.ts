@@ -24,7 +24,6 @@ import { SkyToastService } from '../../../services/common/toast/toast.service';
 export class CustomerAddPage implements OnInit{
 
   customer: Customer = new Customer();
-  curAddresss: string[] = ['', '', ''];
   loading: any;
   customerId: number;
 
@@ -43,10 +42,6 @@ export class CustomerAddPage implements OnInit{
         (data) => {
           this.loading.dismiss();
           this.customer = data;
-          this.curAddresss = data.addresss;
-          while(this.curAddresss.length <3){
-            this.curAddresss.push("");
-          }
         },
         () => {
           this.loading.dismiss();
@@ -73,7 +68,7 @@ export class CustomerAddPage implements OnInit{
     } else {
       isAddress = true;
       titleName = '常用地址' + (name + 1);
-      content = this.curAddresss[name];
+      content = this.customer.addresss[name];
     }
     const textInputModal = this.modalController.create(TextInputModalComponent, {
       title: titleName,
@@ -84,7 +79,7 @@ export class CustomerAddPage implements OnInit{
         if (!isAddress) {
           this.customer[name] = data;
         } else {
-          this.curAddresss[name] = data;
+          this.customer.addresss[name] = data;
         }
       }
     });
@@ -93,7 +88,6 @@ export class CustomerAddPage implements OnInit{
   }
 
   save() {
-    this.customer.addresss = this.curAddresss;
     while(!this.customer.addresss[this.customer.addresss.length-1]){
       this.customer.addresss.pop();
     }
@@ -128,6 +122,10 @@ export class CustomerAddPage implements OnInit{
       );
     }
     
+  }
+
+  addAddress(){
+    this.customer.addresss.push('');
   }
 
 }

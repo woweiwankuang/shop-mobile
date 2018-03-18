@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
-import { SoldRec } from '../model/soldRec';
+import { SoldRec } from '../model/sold-rec';
 import { ServerUrl } from '../../../global';
 import { JsonUtil } from '../util/json-util';
+import { SoldRecDTO } from '../../../pages/sold/sold-search/sold-rec-dto';
 
 @Injectable()
 export class SoldInterface {
@@ -25,5 +26,29 @@ export class SoldInterface {
      */
     updateSoldRec(soldRec: SoldRec) {
         return this.http.put(ServerUrl.SERVER_URL + '/soldRecs/' + soldRec.id, soldRec);
+    }
+
+    /**
+     * 查询所有销售记录
+     */
+    queryAllSoldRec(customerIds: number[]) {
+        let customerIdStringIds: string[];
+        if (customerIds.length == 0) {
+            customerIdStringIds = [];
+        } else {
+            customerIdStringIds = customerIds.map(id => id.toString());
+        }
+        return this.http.get(ServerUrl.SERVER_URL + '/soldRecs', { params: { 'customerIds': customerIdStringIds } })
+            .map((resp: SoldRecDTO[]) => {
+                return resp.map(item => JsonUtil.jsonConvert(item, SoldRecDTO));
+            });
+    }
+
+    /**
+     * 查询单个销售记录
+     */
+    querySoldRecById(id:number) {
+        return this.http.get(ServerUrl.SERVER_URL + '/soldRecs/' + id)
+        .map(resp => JsonUtil.jsonConvert(resp, SoldRecDTO));
     }
 }

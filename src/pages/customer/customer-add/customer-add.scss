@@ -1,5 +1,6 @@
 @charset "UTF-8";
 .customer-add {
+    text-align: center;
     .create-item {
         width: 100%;
         display: flex;
@@ -8,6 +9,7 @@
         border-bottom: 1px solid #e6e6e6;
         .item-name {
             width: 35%;
+            text-align: left;
         }
         .item-operation {
             width: 65%;
@@ -19,6 +21,10 @@
                 color: #f66;
             }
         }
+    }
+
+    >button {
+        margin-top: 20px;
     }
 
 }

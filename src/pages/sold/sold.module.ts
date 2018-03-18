@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 
 import { SoldPage } from './sold';
 import { SoldAddPageModule } from './sold-add/sold-add.module';
+import { SoldSearchPageModule } from './sold-search/sold-search.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { SoldAddPageModule } from './sold-add/sold-add.module';
   ],
   imports: [
     IonicPageModule.forChild(SoldPage),
-    SoldAddPageModule
+    SoldAddPageModule,
+    SoldSearchPageModule
   ],
   exports: [SoldPage]
 })

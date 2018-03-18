@@ -14,18 +14,21 @@
 
 
 <ion-content padding class="sold-add">
+
   <div class="create-item">
     <span class="required-edit item-name">产品名称</span>
     <span class="item-operation" (click)="selectText('productName')">{{soldRec.productName?soldRec.productName:'请输入'}}
       <ion-icon name="arrow-dropright"></ion-icon>
     </span>
   </div>
+
   <div class="create-item">
     <span class="required-edit item-name">产品数量</span>
     <span class="item-operation" (click)="inputNumber('num')">{{soldRec.num?soldRec.num:'请输入'}}
         <ion-icon name="arrow-dropright"></ion-icon>
     </span>
   </div>
+
   <div class="create-item">
     <span class="required-edit item-name">总成本</span>
     <span class="item-operation" (click)="inputNumber('cost')">{{soldRec.cost?soldRec.cost:'请输入'}}
@@ -71,8 +74,15 @@
   <div class="create-item">
     <span class="required-edit item-name">是否已寄出</span>
     <div class="item-operation">
-      <ion-toggle [(ngModel)]="soldRec.isSend"></ion-toggle>
+      <ion-toggle [(ngModel)]="soldRec.haveSend"></ion-toggle>
     </div>
+  </div>
+
+  <div class="create-item" *ngIf="soldRec.haveSend">
+    <span class="required-edit item-name">快递单号</span>
+    <span class="item-operation" (click)="selectText('trackingNumber')">{{soldRec.trackingNumber?soldRec.trackingNumber:'请输入'}}
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
   </div>
 
 </ion-content>

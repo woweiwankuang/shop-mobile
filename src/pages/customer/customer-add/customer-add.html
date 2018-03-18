@@ -33,33 +33,17 @@
       </span>
     </span>
   </div>
-  <div class="create-item">
-    <span class="required-edit item-name">常用地址1</span>
-    <span class="item-operation" (click)="selectText('0')">
-      <span *ngIf="curAddresss[0]">{{curAddresss[0]}}</span>
-      <span *ngIf="!curAddresss[0]">请填写
+  <div *ngFor="let address of customer.addresss;let i=index" class="create-item">
+    <span class="item-name">常用地址{{i+1}}</span>
+    <span class="item-operation" (click)="selectText(i)">
+      <span *ngIf="customer.addresss[i]">{{customer.addresss[i]}}</span>
+      <span *ngIf="!customer.addresss[i]">请填写
         <ion-icon name="arrow-dropright"></ion-icon>
       </span>
     </span>
   </div>
-  <div class="create-item">
-    <span class="item-name">常用地址2</span>
-    <span class="item-operation" (click)="selectText('1')">
-      <span *ngIf="curAddresss[1]">{{curAddresss[1]}}</span>
-      <span *ngIf="!curAddresss[1]">请填写
-        <ion-icon name="arrow-dropright"></ion-icon>
-      </span>
-    </span>
-  </div>
-  <div class="create-item">
-    <span class="item-name">常用地址3</span>
-    <span class="item-operation" (click)="selectText('2')">
-      <span *ngIf="curAddresss[2]">{{curAddresss[2]}}</span>
-      <span *ngIf="!curAddresss[2]">请填写
-        <ion-icon name="arrow-dropright"></ion-icon>
-      </span>
-    </span>
-  </div>
+
+  <button ion-button (click)="addAddress()">添加地址</button>
 </ion-content>
 <ion-footer>
   <button block ion-button (click)="save()">保存</button>
