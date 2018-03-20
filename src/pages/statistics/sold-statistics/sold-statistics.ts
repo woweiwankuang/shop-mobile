@@ -2,28 +2,27 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the MorePage page.
+ * Generated class for the SoldStatisticsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
 @IonicPage({
-  name: 'more',
-  segment: 'more'
+  name: 'sold-statistics',
+  segment: 'sold-statistics'
 })
 @Component({
-  selector: 'page-more',
-  templateUrl: 'more.html',
+  selector: 'page-sold-statistics',
+  templateUrl: 'sold-statistics.html',
 })
-export class MorePage {
+export class SoldStatisticsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  //去统计页面
-  go2Stats(){
-    this.navCtrl.push('statistics');
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SoldStatisticsPage');
   }
 
 }
