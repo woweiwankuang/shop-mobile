@@ -14,5 +14,17 @@
 
 
 <ion-content padding>
+  <div class="sold-statistics-time-box">
+    <div class="start-time-box" (click)="selectStartTime()">
+      <span>{{startTime | date: 'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="end-time-box" (click)="selectEndTime()">
+      <span>{{endTime | date: 'yyyy-MM-dd'}}</span>
+    </div>
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </div>
+  <div class="sold-statistics-info">
 
+  </div>
 </ion-content>
+
