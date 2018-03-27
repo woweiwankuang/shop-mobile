@@ -23,8 +23,11 @@
     </div>
     <ion-icon name="arrow-dropright"></ion-icon>
   </div>
-  <div class="sold-statistics-info">
-
+  <div class="sold-statistics-info" *ngIf="soldRecStatistics">
+    <p>销售总额:{{soldRecStatistics.totalPrice}}</p>
+    <p>总成本:{{soldRecStatistics.totalCost}}</p>
+    <p>总邮费:{{soldRecStatistics.totalPostage}}</p>
+    <p>总利润:{{soldRecStatistics.totalProfit}}</p>
   </div>
 </ion-content>
 

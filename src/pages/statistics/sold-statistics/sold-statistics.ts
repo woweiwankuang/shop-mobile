@@ -38,6 +38,7 @@ export class SoldStatisticsPage implements OnInit {
   ngOnInit() {
     this.startTime = DateUtil.getNewYear(this.startTime);
     this.endTime = DateUtil.getEndDay(this.endTime);
+    this.getSoldRecStatistics();
   }
 
   /**
@@ -47,7 +48,8 @@ export class SoldStatisticsPage implements OnInit {
     this.pickerService.showDateTime('date', null, null, null, null, this.pickerOption)
       .subscribe(
       date => {
-        this.startTime = date.value.getTime();
+        this.startTime = date.value;
+        this.getSoldRecStatistics();
       }
       );
   }
@@ -59,7 +61,8 @@ export class SoldStatisticsPage implements OnInit {
     this.pickerService.showDateTime('date', null, null, null, null, this.pickerOption)
       .subscribe(
       date => {
-        this.endTime = date.value.getTime();
+        this.endTime = date.value;
+        this.getSoldRecStatistics();
       }
       );
   }
