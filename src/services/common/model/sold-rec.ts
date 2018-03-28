@@ -52,7 +52,7 @@ export class SoldRec extends AbstractEntity {
    * 产品数量
    */
   @JsonProperty('num', Number)
-  产品数量: number = undefined;
+  num: number = undefined;
 
   /**
    * 卖出时间
@@ -71,4 +71,10 @@ export class SoldRec extends AbstractEntity {
    */
   @JsonProperty('trackingNumber', String)
   trackingNumber: string = undefined;
+
+  /**
+   * 所属用户id
+   */
+  @JsonProperty('userId', Number)
+  userId: number = undefined;
 }

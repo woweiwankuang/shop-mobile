@@ -24,6 +24,12 @@ export class Customer extends AbstractEntity {
     @JsonProperty('addresss', [String])
     addresss: string[] = undefined;
 
+    /**
+   * 所属用户id
+   */
+    @JsonProperty('userId', Number)
+    userId: number = undefined;
+
     constructor() {
         super();
         this.realName = '';
