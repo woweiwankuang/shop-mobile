@@ -69,7 +69,7 @@ export class SoldRec extends AbstractEntity {
   /**
    * 快递单号
    */
-  @JsonProperty('trackingNumber', String)
+  @JsonProperty('trackingNumber')
   trackingNumber: string = undefined;
 
   /**

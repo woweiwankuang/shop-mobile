@@ -45,7 +45,7 @@
 
   <div class="create-item">
     <span class="required-edit item-name">邮费</span>
-    <span class="item-operation" (click)="inputNumber('postage')">{{soldRec.postage?soldRec.postage:'请输入'}}
+    <span class="item-operation" (click)="inputNumber('postage')">{{(soldRec.postage || soldRec.postage === 0)?soldRec.postage:'请输入'}}
         <ion-icon name="arrow-dropright"></ion-icon>
     </span>
   </div>

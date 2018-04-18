@@ -43,7 +43,7 @@ export class NumberInputModalComponent implements OnInit, AfterViewChecked {
       this.viewController.dismiss(this.learnCertNumber);
       this.viewController = null;
     } else {
-      this.toast.show('请输入10000以下正数，最多保留一位小数');
+      this.toast.show('请输入10000以下数，最多保留一位小数');
     }
   }
 
@@ -55,7 +55,7 @@ export class NumberInputModalComponent implements OnInit, AfterViewChecked {
   }
 
   private isValidate(): boolean {
-    if (!isUndefined(this.learnCertNumber) && this.learnCertNumber) {
+    if (!isUndefined(this.learnCertNumber) && (this.learnCertNumber || this.learnCertNumber === 0)) {
       return this.reg.test(this.learnCertNumber.toString()) || this.learnCertNumber === 100;
     } else {
       return false;

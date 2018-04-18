@@ -93,7 +93,7 @@ export class SoldAddPage implements OnInit {
         enableBackdropDismiss: false
       });
     numberInputModal.onDidDismiss(data => {
-      if (data) {
+      if (data || data === 0) {
         this.soldRec[name] = data;
       }
     }
