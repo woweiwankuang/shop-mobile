@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { UserInterface } from '../../services/common/user/user.interface';
+import { CreateUser } from './create-user';
+import { SkyToastService } from '../../services/common/toast/toast.service';
 
 @IonicPage({
   name: 'register',
@@ -18,11 +15,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  createUser: CreateUser = new CreateUser();
+  loading: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private toast: SkyToastService, private loadingController: LoadingController,
+    private userInterface: UserInterface) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  register() {
+    this.loading = this.loadingController.create({
+      content: '注册中...'
+    });
+    this.loading.present();
+    this.userInterface.register(this.createUser).subscribe(
+      () => {
+        this.loading.dismiss();
+        this.toast.show('注册成功');
+        this.navCtrl.setRoot('login');
+      },
+      () => {
+        this.loading.dismiss();
+        this.toast.show('注册失败，请重试');
+      }
+    );
   }
 
 }

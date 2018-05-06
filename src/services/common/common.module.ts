@@ -6,6 +6,7 @@ import { CustomerInterface } from './customer/customer.interface';
 import { SkyToastService } from './toast/toast.service';
 import { SoldInterface } from './sold/sold.interface';
 import { StatisticsInterface } from './statistics/statistics.interface';
+import { UserInterface } from './user/user.interface';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { StatisticsInterface } from './statistics/statistics.interface';
     CustomerInterface,
     SkyToastService,
     SoldInterface,
-    StatisticsInterface
+    StatisticsInterface,
+    UserInterface
   ]
 })
 export class SkyCommonModule {
