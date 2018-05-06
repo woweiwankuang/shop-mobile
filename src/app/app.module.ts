@@ -8,6 +8,8 @@ import { WeUiModule } from 'ngx-weui';
 import { MyApp } from './app.component';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { SkyCommonModule } from '../services/common/common.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { RegisterPageModule } from '../pages/register/register.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { SkyCommonModule } from '../services/common/common.module';
     IonicModule.forRoot(MyApp),
     TabsPageModule,
     SkyCommonModule,
+    LoginPageModule,
+    RegisterPageModule,
     WeUiModule.forRoot()
   ],
   bootstrap: [IonicApp],
