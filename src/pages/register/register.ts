@@ -24,6 +24,32 @@ export class RegisterPage {
   }
 
   register() {
+    if (!this.createUser.username) {
+      this.toast.show('用户名不能为空');
+      return;
+    }
+    if (this.createUser.username.length < 6) {
+      this.toast.show('用户名不能小于6位');
+      return;
+    }
+    if (!this.createUser.password) {
+      this.toast.show('密码不能为空');
+      return;
+    }
+
+    if (!this.createUser.password2) {
+      this.toast.show('重复密码不能为空');
+      return;
+    }
+
+    if (this.createUser.password.length < 6 || this.createUser.password.length > 18) {
+      this.toast.show('密码长度6-18位');
+      return;
+    }
+    if (!this.createUser.checkPasswordSame()) {
+      this.toast.show('两次密码不一致');
+      return;
+    }
     this.loading = this.loadingController.create({
       content: '注册中...'
     });

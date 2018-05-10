@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+
+import { AuthService } from '../../services/common/auth/auth.service';
 
 /**
  * Generated class for the MorePage page.
@@ -18,12 +20,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MorePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private authService: AuthService, private event: Events) {
   }
 
   //去统计页面
   go2Stats(){
     this.navCtrl.push('statistics');
+  }
+  //退出登录
+  logout() {
+    this.authService.logout();
+    this.event.publish('user:logout');
+    this.navCtrl.setRoot('login');
   }
 
 }

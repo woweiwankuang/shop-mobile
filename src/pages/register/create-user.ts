@@ -21,4 +21,8 @@ export class CreateUser {
    */
   @JsonProperty('password2', String)
   password2: string = undefined;
+
+  checkPasswordSame(): boolean {
+    return this.password === this.password2;
+  }
 }
