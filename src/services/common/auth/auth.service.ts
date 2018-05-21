@@ -29,7 +29,7 @@ export class AuthService {
         return false;
       }
 
-      if (new Date().getTime() > this.localStorage.get('token').expire_time * 1000) {
+      if (new Date().getTime() > this.localStorage.get('token').expire_time) {
         return false;
       }
 
