@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { PickerService } from 'ngx-weui';
 
 import { PickerOption } from '../../../services/common/model/picker-option/picker-option';
 import { SkyToastService } from '../../../services/common/toast/toast.service';
 import { SoldInterface } from '../../../services/common/sold/sold.interface';
+import { SkySheetService } from '../../../services/common/sheet/sheet.service';
+import { SheetModel } from '../../../services/common/model/common/sheet-model';
 /**
  * Generated class for the SoldRecExportPage page.
  *
@@ -28,7 +31,8 @@ export class SoldRecExportPage {
   loading: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private pickerService: PickerService,
-    private loadingController: LoadingController, private toast: SkyToastService, private soldInterface: SoldInterface) {
+    private loadingController: LoadingController, private toast: SkyToastService, private soldInterface: SoldInterface,
+    private datePipe: DatePipe, private sheetService: SkySheetService) {
   }
 
   /**
@@ -67,10 +71,55 @@ export class SoldRecExportPage {
       (resp) => {
         this.loading.dismiss();
         let soldRecDTOs = resp;
-        if(soldRecDTOs.length === 0){
+        if (soldRecDTOs.length === 0) {
           this.toast.show("没有可导出的数据");
           return;
         }
+        let header = [{
+          filedName: 'productName',
+          name: '产品名称'
+        }, {
+          filedName: 'num',
+          name: '产品数量'
+        }, {
+          filedName: 'cost',
+          name: '总成本'
+        }, {
+          filedName: 'price',
+          name: '总售价'
+        }, {
+          filedName: 'postage',
+          name: '邮费'
+        }, {
+          filedName: 'soldTime',
+          name: '卖出时间'
+        }, {
+          filedName: 'customerName',
+          name: '顾客'
+        }, {
+          filedName: 'address',
+          name: '地址'
+        }];
+
+        let data = [];
+
+        soldRecDTOs.forEach(soldRecDTO => {
+          data.push({
+            productName: soldRecDTO.soldRec.productName,
+            num: soldRecDTO.soldRec.num.toString(),
+            cost: soldRecDTO.soldRec.cost.toString(),
+            price: soldRecDTO.soldRec.price.toString(),
+            postage: soldRecDTO.soldRec.postage.toString(),
+            soldTime: this.datePipe.transform(soldRecDTO.soldRec.soldTime, 'yyyy-MM-dd'),
+            customerName: soldRecDTO.customer.realName,
+            address: soldRecDTO.soldRec.address
+          });
+        });
+
+        let excelModel = new SheetModel('销售记录');
+        excelModel.setSheet(header, data);
+        this.sheetService.exportExcel(excelModel, 'xlsx',
+          this.datePipe.transform(this.startTime.getTime(), 'yyyy-MM-dd') + '至' + this.datePipe.transform(this.endTime.getTime(), 'yyyy-MM-dd') + '销售记录');
       },
       () => {
         this.loading.dismiss();

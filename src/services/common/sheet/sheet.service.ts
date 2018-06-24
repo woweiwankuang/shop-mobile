@@ -3,7 +3,7 @@ import { saveAs } from 'file-saver';
 import { SheetModel } from '../model/common/sheet-model';
 import { isUndefined } from 'util';
 
-export class NecSheetService {
+export class SkySheetService {
 
   constructor() {
   }

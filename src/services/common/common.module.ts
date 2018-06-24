@@ -11,6 +11,7 @@ import { ErrorInterceptor } from './httpInterceptor/error.interceptor';
 import { AuthInterceptor } from './httpInterceptor/auth.interceptor';
 import { AuthService } from './auth/auth.service';
 import { SkyLocalStorageService } from './localStorage/local-storage.service';
+import { SkySheetService } from './sheet/sheet.service';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { SkyLocalStorageService } from './localStorage/local-storage.service';
     SoldInterface,
     StatisticsInterface,
     UserInterface,
+    SkySheetService,
 
     {
       provide: HTTP_INTERCEPTORS,

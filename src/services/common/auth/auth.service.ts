@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/retry';
 
 import { SkyAccessToken } from './access-token';
-// import { NecErrorCollectService } from './../error-collect/error-collect.service';
+// import { SkyErrorCollectService } from './../error-collect/error-collect.service';
 import { SkyLocalStorageService } from '../localStorage/local-storage.service';
 import { ServerUrl } from '../../../global';
 // import { UserService } from '../user/user.service';
@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient,
     private localStorage: SkyLocalStorageService
     // private userService: UserService,
-    // private errorCollectService: NecErrorCollectService
+    // private errorCollectService: SkyErrorCollectService
   ) {
   }
 
