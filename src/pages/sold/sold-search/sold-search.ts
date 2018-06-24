@@ -39,7 +39,7 @@ export class SoldSearchPage implements OnInit {
       content: '查询中...'
     });
     this.loading.present();
-    this.soldInterface.queryAllSoldRec([]).subscribe(
+    this.soldInterface.queryAllSoldRecByCustomer([]).subscribe(
       (resp) => {
         this.loading.dismiss();
         this.soldRecDTOs = resp;

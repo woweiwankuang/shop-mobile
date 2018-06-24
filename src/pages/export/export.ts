@@ -22,7 +22,7 @@ export class ExportPage {
   }
 
   go2SoldRecExport(){
-    this.navCtrl.push('sold-statistics');
+    this.navCtrl.push('sold-rec-export');
   }
 
 }

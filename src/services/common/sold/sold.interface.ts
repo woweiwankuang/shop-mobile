@@ -29,16 +29,26 @@ export class SoldInterface {
     }
 
     /**
-     * 查询所有销售记录
+     * 通过顾客查询所有销售记录
      */
-    queryAllSoldRec(customerIds: number[]) {
+    queryAllSoldRecByCustomer(customerIds: number[]) {
         let customerIdStringIds: string[];
         if (customerIds.length == 0) {
             customerIdStringIds = [];
         } else {
             customerIdStringIds = customerIds.map(id => id.toString());
         }
-        return this.http.get(ServerUrl.SERVER_URL + '/soldRecs', { params: { 'customerIds': customerIdStringIds } })
+        return this.http.get(ServerUrl.SERVER_URL + '/soldRecs', { params: { 'customerIds': customerIdStringIds, 'type': 'customer' } })
+            .map((resp: SoldRecDTO[]) => {
+                return resp.map(item => JsonUtil.jsonConvert(item, SoldRecDTO));
+            });
+    }
+
+    /**
+     * 通过时间查询所有销售记录
+     */
+    queryAllSoldRecByTime(startTime: number, endTime: number) {
+        return this.http.get(ServerUrl.SERVER_URL + '/soldRecs', { params: { 'startTime': startTime.toString(), 'endTime': endTime.toString() , 'type': 'time' } })
             .map((resp: SoldRecDTO[]) => {
                 return resp.map(item => JsonUtil.jsonConvert(item, SoldRecDTO));
             });
