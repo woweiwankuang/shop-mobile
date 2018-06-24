@@ -1,4 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
+import { Events } from 'ionic-angular';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -13,7 +14,7 @@ import { AuthService } from '../auth/auth.service';
 export class ErrorInterceptor implements HttpInterceptor {
   authService: AuthService;
 
-  constructor(private injector: Injector, private toast: SkyToastService) {
+  constructor(private injector: Injector, private toast: SkyToastService, private event: Events) {
     setTimeout(() => {
       this.authService = this.injector.get(AuthService);
     }, 500);
@@ -36,8 +37,10 @@ export class ErrorInterceptor implements HttpInterceptor {
             return next.handle(authReq);
           }
           else {
+            this.authService.logout();
+            this.event.publish('user:logout');
             location.href = location.origin + '/#/login';
-            this.toast.show('登录信息过期，请重新登录',4000);
+            this.toast.show('登录信息过期，请重新登录', 4000);
             return Observable.of(new HttpResponse());
           }
         }

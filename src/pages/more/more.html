@@ -14,8 +14,14 @@
 
 
 <ion-content padding class="more">
-  <ion-list class="more-list" (click)="go2Stats()">
-    <ion-icon name="stats"></ion-icon>统计
+  <ion-list class="more-list" >
+    <button ion-item (click)="go2Stats()">
+        <ion-icon name="stats"></ion-icon>统计
+    </button>
+
+    <button ion-item (click)="go2Export()">
+        <ion-icon name="md-open"></ion-icon>导出excel
+    </button>
   </ion-list>
   <button ion-button full round class="logout-btn" (click)="logout()">退出登录</button>
 </ion-content>

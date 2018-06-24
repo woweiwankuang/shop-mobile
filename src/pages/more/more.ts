@@ -28,6 +28,12 @@ export class MorePage {
   go2Stats(){
     this.navCtrl.push('statistics');
   }
+
+  //去导出页面
+  go2Export(){
+    this.navCtrl.push('export');
+  }
+  
   //退出登录
   logout() {
     this.authService.logout();
