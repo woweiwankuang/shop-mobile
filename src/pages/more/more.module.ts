@@ -4,6 +4,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { MorePage } from './more';
 import { StatisticsPageModule } from '../statistics/statistics.module';
 import { ExportPageModule } from '../export/export.module';
+import { BindCodePageModule } from '../bind-code/bind-code.module';
 @NgModule({
   declarations: [
     MorePage,
@@ -11,7 +12,8 @@ import { ExportPageModule } from '../export/export.module';
   imports: [
     IonicPageModule.forChild(MorePage),
     StatisticsPageModule,
-    ExportPageModule
+    ExportPageModule,
+    BindCodePageModule
   ],
   exports: [MorePage]
 })

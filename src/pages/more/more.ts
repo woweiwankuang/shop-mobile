@@ -33,6 +33,11 @@ export class MorePage {
   go2Export(){
     this.navCtrl.push('export');
   }
+
+  //去绑定码页面
+  go2BindCode(){
+    this.navCtrl.push('bind-code');
+  }
   
   //退出登录
   logout() {
