@@ -6,6 +6,7 @@ import { SoldRec } from '../model/sold-rec';
 import { ServerUrl } from '../../../global';
 import { JsonUtil } from '../util/json-util';
 import { SoldRecDTO } from '../../../pages/sold/sold-search/sold-rec-dto';
+import { TrackingNumberDTO } from '../../../pages/search/tracking-number-dto';
 
 @Injectable()
 export class SoldInterface {
@@ -62,5 +63,23 @@ export class SoldInterface {
   querySoldRecById(id: number) {
     return this.http.get(ServerUrl.SERVER_URL + '/soldRecs/' + id)
       .map(resp => JsonUtil.jsonConvert(resp, SoldRecDTO));
+  }
+
+  /**
+   * 查询单号记录
+   */
+  queryTrackingNumber(bindCode: string, phoneNum: string) {
+    const params = new HttpParams()
+    .set('bindCode', bindCode)
+    .set('phoneNum', phoneNum)
+    .set('type', 'bindCode')
+    .set('page', '0')
+    .set('size', '10')
+    .set('sort', 'soldTime,desc');
+    return this.http.get<any>(ServerUrl.SERVER_URL + '/trackingNumbers', {params: params})
+    .map(data => data.content ? data.content : [])
+    .map((resp: TrackingNumberDTO[]) => {
+      return resp.map(item => JsonUtil.jsonConvert(item, TrackingNumberDTO));
+    });
   }
 }

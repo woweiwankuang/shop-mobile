@@ -10,6 +10,7 @@ import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { SkyCommonModule } from '../services/common/common.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { RegisterPageModule } from '../pages/register/register.module';
+import { SearchPageModule } from '../pages/search/search.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RegisterPageModule } from '../pages/register/register.module';
     SkyCommonModule,
     LoginPageModule,
     RegisterPageModule,
+    SearchPageModule,
     WeUiModule.forRoot()
   ],
   bootstrap: [IonicApp],

@@ -30,7 +30,7 @@ export class TextInputModalComponent implements OnInit, AfterViewInit {
 
   save() {
     if (this.viewController) {
-      if (!isUndefined(this.textContent)) {
+      if (!isUndefined(this.textContent) && this.textContent) {
         this.textContent = this.filterSpace(this.textContent);
       }
       this.viewController.dismiss(this.textContent);
@@ -43,7 +43,7 @@ export class TextInputModalComponent implements OnInit, AfterViewInit {
    */
   killMyself() {
     if (this.viewController) {
-      if (!isUndefined(this.textContent)) {
+      if (!isUndefined(this.textContent) && this.textContent) {
         this.textContent = this.filterSpace(this.textContent);
       }
       this.viewController.dismiss(this.textContent);
