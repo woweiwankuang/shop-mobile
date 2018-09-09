@@ -37,10 +37,8 @@ export class BindCodePage implements OnInit {
     });
     this.loading.present();
     this.bindCodeInterface.getMyBindCode().subscribe(
-      (resp: String) => {
+      (resp) => {
         this.loading.dismiss();
-        console.log(resp);
-        
         if (resp != null) {
           this.bindCode = String(resp);
         }
@@ -60,7 +58,9 @@ export class BindCodePage implements OnInit {
     this.bindCodeInterface.generateBindCode().subscribe(
       (resp) => {
         this.loading.dismiss();
-        this.bindCode = String(resp);
+        if (resp != null) {
+          this.bindCode = String(resp);
+        }
       },
       () => {
         this.loading.dismiss();

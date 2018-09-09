@@ -14,13 +14,17 @@ export class BindCodeInterface {
    * 获取自己的绑定码
    */
   getMyBindCode() {
-    return this.http.get(ServerUrl.SERVER_URL + '/userBindInfos');
+    return this.http.get(ServerUrl.SERVER_URL + '/userBindInfos', {
+      responseType: 'text'
+    });
   }
 
   /**
    * 生成/重新生成自己的绑定码
    */
   generateBindCode() {
-    return this.http.post(ServerUrl.SERVER_URL + '/userBindInfoGenerates', null);
+    return this.http.post(ServerUrl.SERVER_URL + '/userBindInfoGenerates', null, {
+      responseType: 'text'
+    });
   }
 }
