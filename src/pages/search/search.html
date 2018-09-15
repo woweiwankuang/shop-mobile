@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding overflow-scroll="true">
   <div class="create-item">
     <span class="required-edit item-name">查询码</span>
     <span class="item-operation" (click)="selectText('bindCode')">{{bindCode?bindCode:'请输入'}}
@@ -31,9 +31,11 @@
   <button block ion-button (click)="search()">查询</button>
 
   <ion-list class="tracking-number-list" *ngIf="trackingNumbers&&trackingNumbers.length > 0">
-    <p>以下为该手机号用户近10次购买的商品及单号</p>
+    <p>以下为该手机号用户近10次购买的商品及单号，如名字太长可左右滑动，长按可复制单号</p>
     <ion-item ion-item *ngFor="let trackingNumber of trackingNumbers">
+      <div class="selectable">
       {{ trackingNumber.productName }}--单号:{{trackingNumber.trackingNumber}}
+      </div>
     </ion-item>
   </ion-list>
   

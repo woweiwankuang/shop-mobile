@@ -84,4 +84,8 @@ export class LoginPage {
     this.navCtrl.push('register');
   }
 
+  search() {
+    this.navCtrl.push('search');
+  }
+
 }
