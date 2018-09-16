@@ -14,7 +14,7 @@
 
 
 <ion-content padding overflow-scroll="true">
-  <div class="create-item">
+  <div class="create-item" *ngIf="!hideBindCode">
     <span class="required-edit item-name">查询码</span>
     <span class="item-operation" (click)="selectText('bindCode')">{{bindCode?bindCode:'请输入'}}
       <ion-icon name="arrow-dropright"></ion-icon>

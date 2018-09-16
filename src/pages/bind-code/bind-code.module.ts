@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+import { QRCodeModule } from 'angular2-qrcode';
+
 import { BindCodePage } from './bind-code';
 
 @NgModule({
@@ -8,6 +10,7 @@ import { BindCodePage } from './bind-code';
   ],
   imports: [
     IonicPageModule.forChild(BindCodePage),
+    QRCodeModule
   ],
   exports: [
     BindCodePage

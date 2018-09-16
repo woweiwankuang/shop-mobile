@@ -17,6 +17,14 @@
   <div class="bind-code-area">
     <div *ngIf="bindCode">当前查询码为：
       <p>{{bindCode}}</p>
+      <ion-card>
+        <ion-card-content>
+          <div>
+            <qr-code [value]="qrCodeUrl" size="240"></qr-code>
+          </div>
+          <p class="text-c font-n font-light">扫一扫上面的二维码查询单号</p>
+        </ion-card-content>
+      </ion-card>
     </div>
     <div *ngIf="!bindCode">你还没有查询码哦</div>
   </div>

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 
 import { BindCodeInterface } from '../../services/common/bind-code/bind-code.interface';
 import { SkyToastService } from '../../services/common/toast/toast.service';
+import { ServerUrl } from '../../global';
 
 /**
  * Generated class for the BindCodePage page.
@@ -23,6 +24,7 @@ export class BindCodePage implements OnInit {
 
   bindCode: string = null;//绑定码
   loading: any;
+  qrCodeUrl: string = null;//二维码url
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -41,6 +43,7 @@ export class BindCodePage implements OnInit {
         this.loading.dismiss();
         if (resp != null) {
           this.bindCode = String(resp);
+          this.qrCodeUrl = ServerUrl.WEB_URL + '/#/search/' + this.bindCode;
         }
       },
       () => {

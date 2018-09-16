@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 
 import { TextInputModalComponent } from '../common/text-input-modal/text-input-modal.component';
@@ -15,18 +15,18 @@ import { SkyToastService } from '../../services/common/toast/toast.service';
 
 @IonicPage({
   name: 'search',
-  segment: 'search'
+  segment: 'search/:bindCode'
 })
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
 })
-export class SearchPage {
-
+export class SearchPage implements OnInit {
   bindCode: string = null;//绑定码
   phoneNum: string = null;//手机号
   loading: any;
   trackingNumbers: TrackingNumberDTO[];//单号list
+  hideBindCode: boolean = false;//隐藏查询码
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -34,6 +34,14 @@ export class SearchPage {
     private loadingController: LoadingController,
     private toast: SkyToastService,
     private soldInterface: SoldInterface) {
+  }
+
+  ngOnInit() {
+    let bindCode = this.navParams.get('bindCode');
+    if (bindCode) {
+      this.bindCode = bindCode;
+      this.hideBindCode = true;
+    }
   }
 
   /**
