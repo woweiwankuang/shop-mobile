@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController, AlertController  } from 'ionic-angular';
 
 import { TextInputModalComponent } from '../common/text-input-modal/text-input-modal.component';
 import { SoldInterface } from '../../services/common/sold/sold.interface';
@@ -33,6 +33,7 @@ export class SearchPage implements OnInit {
     private modalController: ModalController,
     private loadingController: LoadingController,
     private toast: SkyToastService,
+    private alertCtrl: AlertController,
     private soldInterface: SoldInterface) {
   }
 
@@ -82,6 +83,42 @@ export class SearchPage implements OnInit {
       (resp) => {
         this.loading.dismiss();
         this.trackingNumbers = resp;
+      },
+      () => {
+        this.loading.dismiss();
+        this.toast.show('查询失败,请确认手机号码是否正确');
+      }
+    );
+  }
+
+  /**
+   * 查询快递物流
+   * @param trackingNumber 快递号
+   */
+  searchTrackingNumber(trackingNumber: string) {
+    this.loading = this.loadingController.create({
+      content: '查询中...'
+    });
+    this.loading.present();
+    this.soldInterface.searchTrackingNumber(trackingNumber).subscribe(
+      (resp) => {
+        this.loading.dismiss();
+        var exp = JSON.parse(resp);
+        var result = '';
+        if (exp.Traces && exp.Traces.length > 0) {
+          exp.Traces.forEach(trace => {
+            result += '<p>' + trace.AcceptTime + ' ：' + trace.AcceptStation + '</p>';
+          });
+        }else {
+          result = '<p>暂无物流信息</p>';
+        }
+        const alert = this.alertCtrl.create({
+          title: '物流查询',
+          cssClass:'search-alter',
+          subTitle: result,
+          buttons: ['OK']
+        });
+        alert.present();
       },
       () => {
         this.loading.dismiss();

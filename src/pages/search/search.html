@@ -31,9 +31,9 @@
   <button block ion-button (click)="search()">查询</button>
 
   <ion-list class="tracking-number-list" *ngIf="trackingNumbers&&trackingNumbers.length > 0">
-    <p>以下为该手机号用户近10次购买的商品及单号，如名字太长可左右滑动，长按可复制单号</p>
+    <p>以下为该手机号用户近10次购买的商品及单号，如名字太长可左右滑动，长按可复制单号，点击可直接查询该商品的物流信息</p>
     <ion-item ion-item *ngFor="let trackingNumber of trackingNumbers">
-      <div class="selectable">
+      <div class="selectable" (click)="searchTrackingNumber(trackingNumber.trackingNumber)">
       {{ trackingNumber.productName }}--单号:{{trackingNumber.trackingNumber}}
       </div>
     </ion-item>

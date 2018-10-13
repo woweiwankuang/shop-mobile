@@ -82,4 +82,15 @@ export class SoldInterface {
       return resp.map(item => JsonUtil.jsonConvert(item, TrackingNumberDTO));
     });
   }
+
+  /**
+   * 获取快递物流
+   */
+  searchTrackingNumber(trackingNumber:string) {
+    const params = new HttpParams().set('trackingNumber', trackingNumber);
+    return this.http.post(ServerUrl.SERVER_URL + '/expressSearchs', null, {
+      params: params,
+      responseType: 'text'
+    });
+  }
 }
