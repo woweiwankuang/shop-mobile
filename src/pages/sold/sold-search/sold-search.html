@@ -17,7 +17,7 @@
   <ion-list class="customer-list" *ngIf="soldRecDTOs&&soldRecDTOs.length > 0">
     <button ion-item *ngFor="let soldRecDTO of soldRecDTOs" (click)="editSoldRec(soldRecDTO)">
       {{ soldRecDTO.customer.realName }}--{{soldRecDTO.soldRec.productName}}
-    </button>  
-</ion-list>
-<p *ngIf="!soldRecDTOs||soldRecDTOs.length === 0">没有内容了~</p>
+    </button>
+  </ion-list>
+  <p *ngIf="!soldRecDTOs||soldRecDTOs.length === 0">没有内容了~</p>
 </ion-content>

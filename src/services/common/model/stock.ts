@@ -26,12 +26,12 @@ export class Stock extends AbstractEntity {
   /**
    * 规格
    */
-  @JsonProperty('specification', String)
+  @JsonProperty('specification')
   specification: string = undefined;
 
   /**
    * 供应商
    */
-  @JsonProperty('supplier', String)
+  @JsonProperty('supplier')
   supplier: string = undefined;
 }

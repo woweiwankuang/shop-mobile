@@ -33,4 +33,15 @@ export class StockInterface {
       .map(resp => JsonUtil.jsonConvert(resp, Stock));
   }
 
+  /**
+   * 根据名称模糊搜索
+   */
+  queryStocksByName(name: string) {
+    const params = new HttpParams().set('name', name).set('type', 'name');
+    return this.http.get(ServerUrl.SERVER_URL + '/stocks', { params: params})
+      .map((resp: Stock[]) => {
+        return resp.map(item => JsonUtil.jsonConvert(item, Stock));
+      });
+  }
+
 }
