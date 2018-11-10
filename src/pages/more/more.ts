@@ -38,6 +38,11 @@ export class MorePage {
   go2BindCode(){
     this.navCtrl.push('bind-code');
   }
+
+  //去库存页面
+  go2Stock(){
+    this.navCtrl.push('stock');
+  }
   
   //退出登录
   logout() {

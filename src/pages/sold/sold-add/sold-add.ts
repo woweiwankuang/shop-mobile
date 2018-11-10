@@ -187,8 +187,7 @@ export class SoldAddPage implements OnInit {
           this.toast.show('更新成功');
           this.navCtrl.setRoot('sold-search');
         },
-        (data) => {
-          console.log(data);     
+        (data) => { 
           this.loading.dismiss();
           this.toast.show('更新失败');
         }

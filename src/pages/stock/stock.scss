@@ -1,0 +1,14 @@
+@charset "UTF-8";
+page-stock {
+  .btn-tab {
+    height: 50%;
+    text-align: center;
+    padding: 25% 0;
+    &:first-child {
+        border-bottom: 1px solid #ccc;
+    }
+    >ion-icon {
+        font-size: 60px;
+    }
+}
+}

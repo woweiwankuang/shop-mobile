@@ -13,6 +13,7 @@ import { AuthService } from './auth/auth.service';
 import { SkyLocalStorageService } from './localStorage/local-storage.service';
 import { SkySheetService } from './sheet/sheet.service';
 import { BindCodeInterface } from './bind-code/bind-code.interface';
+import { StockInterface } from './stock/stock.interface';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { BindCodeInterface } from './bind-code/bind-code.interface';
     UserInterface,
     SkySheetService,
     BindCodeInterface,
+    StockInterface,
 
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,0 +1,30 @@
+page-stock-add {
+  .create-item {
+    width: 100%;
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+
+    .item-name {
+      width: 35%;
+    }
+
+    .item-operation {
+      width: 65%;
+      text-align: right;
+
+      ion-toggle {
+        float: right;
+      }
+    }
+
+    .required-edit {
+      &:before {
+        content: '*';
+        color: #f66;
+      }
+    }
+  }
+
+}

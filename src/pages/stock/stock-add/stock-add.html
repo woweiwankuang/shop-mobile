@@ -1,0 +1,55 @@
+<!--
+  Generated template for the StockAddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>库存管理</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="create-item">
+    <span class="required-edit item-name">产品名称</span>
+    <span class="item-operation" (click)="selectText('name')">{{stock.name?stock.name:'请输入'}}
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="required-edit item-name">产品数量</span>
+    <span class="item-operation" (click)="inputNumber('num')">{{stock.num?stock.num:'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="item-name">总价</span>
+    <span class="item-operation" (click)="inputNumber('price')">{{stock.price?stock.price:'请输入'}}
+        <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="item-name">规格</span>
+    <span class="item-operation" (click)="selectText('specification')">{{stock.specification?stock.specification:'请输入'}}
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="item-name">供应商</span>
+    <span class="item-operation" (click)="selectText('supplier')">{{stock.supplier?stock.supplier:'请输入'}}
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <button block ion-button (click)="save()">保存</button>
+</ion-footer>
