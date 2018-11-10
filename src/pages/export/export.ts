@@ -24,5 +24,9 @@ export class ExportPage {
   go2SoldRecExport(){
     this.navCtrl.push('sold-rec-export');
   }
+  
+  go2StockExport(){
+    this.navCtrl.push('stock-export');
+  }
 
 }

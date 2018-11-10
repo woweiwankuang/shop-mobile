@@ -101,7 +101,7 @@ export class StockAddPage implements OnInit {
         () => {
           this.loading.dismiss();
           this.toast.show('保存成功');
-          this.navCtrl.setRoot('stock');
+          this.navCtrl.push('stock');
         },
         () => {
           this.loading.dismiss();
@@ -113,7 +113,7 @@ export class StockAddPage implements OnInit {
         () => {
           this.loading.dismiss();
           this.toast.show('更新成功');
-          this.navCtrl.setRoot('stock-search');
+          this.navCtrl.push('stock-search');
         },
         (data) => {  
           this.loading.dismiss();

@@ -34,4 +34,10 @@ export class Stock extends AbstractEntity {
    */
   @JsonProperty('supplier')
   supplier: string = undefined;
+
+  /**
+   * 所属用户id
+   */
+  @JsonProperty('userId', Number)
+  userId: number = undefined;
 }

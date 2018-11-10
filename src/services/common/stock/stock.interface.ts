@@ -38,7 +38,18 @@ export class StockInterface {
    */
   queryStocksByName(name: string) {
     const params = new HttpParams().set('name', name).set('type', 'name');
-    return this.http.get(ServerUrl.SERVER_URL + '/stocks', { params: params})
+    return this.http.get(ServerUrl.SERVER_URL + '/stocks', { params: params })
+      .map((resp: Stock[]) => {
+        return resp.map(item => JsonUtil.jsonConvert(item, Stock));
+      });
+  }
+
+  /**
+   * 根据时间搜索
+   */
+  queryStocksByTime(startTime: number, endTime: number) {
+    const params = new HttpParams().set('startTime', startTime.toString()).set('endTime', endTime.toString()).set('type', 'name');
+    return this.http.get(ServerUrl.SERVER_URL + '/stocks', { params: params })
       .map((resp: Stock[]) => {
         return resp.map(item => JsonUtil.jsonConvert(item, Stock));
       });
