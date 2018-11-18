@@ -6,13 +6,15 @@ import { TextInputModalComponent } from './text-input-modal/text-input-modal.com
 import { NumberInputModalComponent } from './number-input-modal/number-input-modal.component';
 import { CustomerListComponent } from '../customer/customer-list/customer-list';
 import { SelectListModalComponent } from './select-list/select-list';
+import { SupplierListComponent } from '../supplier/supplier-list/supplier-list';
 
 @NgModule({
     declarations: [
         TextInputModalComponent,
         NumberInputModalComponent,
         CustomerListComponent,
-        SelectListModalComponent
+        SelectListModalComponent,
+        SupplierListComponent
     ],
     imports: [
         IonicPageModule,
@@ -22,13 +24,15 @@ import { SelectListModalComponent } from './select-list/select-list';
         TextInputModalComponent,
         NumberInputModalComponent,
         CustomerListComponent,
-        SelectListModalComponent
+        SelectListModalComponent,
+        SupplierListComponent
     ],
     exports: [
         TextInputModalComponent,
         NumberInputModalComponent,
         CustomerListComponent,
-        SelectListModalComponent
+        SelectListModalComponent,
+        SupplierListComponent
     ]
 })
 export class CommonCompoentModule { }

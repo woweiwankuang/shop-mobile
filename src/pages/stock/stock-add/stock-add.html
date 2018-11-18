@@ -24,14 +24,14 @@
   <div class="create-item">
     <span class="required-edit item-name">产品数量</span>
     <span class="item-operation" (click)="inputNumber('num')">{{stock.num?stock.num:'请输入'}}
-        <ion-icon name="arrow-dropright"></ion-icon>
+      <ion-icon name="arrow-dropright"></ion-icon>
     </span>
   </div>
 
   <div class="create-item">
     <span class="item-name">总价</span>
     <span class="item-operation" (click)="inputNumber('price')">{{stock.price?stock.price:'请输入'}}
-        <ion-icon name="arrow-dropright"></ion-icon>
+      <ion-icon name="arrow-dropright"></ion-icon>
     </span>
   </div>
 
@@ -44,8 +44,14 @@
 
   <div class="create-item">
     <span class="item-name">供应商</span>
-    <span class="item-operation" (click)="selectText('supplier')">{{stock.supplier?stock.supplier:'请输入'}}
+    <span class="item-operation" (click)="selectSupplier()">{{supplier&&supplier.id?supplier.name:'请选择'}}
       <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="item-name">供应商电话</span>
+    <span class="item-operation">{{supplier&&supplier.id?supplier.phoneNum:''}}
     </span>
   </div>
 

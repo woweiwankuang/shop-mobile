@@ -14,6 +14,7 @@ import { SkyLocalStorageService } from './localStorage/local-storage.service';
 import { SkySheetService } from './sheet/sheet.service';
 import { BindCodeInterface } from './bind-code/bind-code.interface';
 import { StockInterface } from './stock/stock.interface';
+import { SupplierInterface } from './supplier/supplier.interface';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { StockInterface } from './stock/stock.interface';
     SkySheetService,
     BindCodeInterface,
     StockInterface,
+    SupplierInterface,
 
     {
       provide: HTTP_INTERCEPTORS,

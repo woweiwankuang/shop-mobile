@@ -5,6 +5,8 @@ import { StockInterface } from '../../../services/common/stock/stock.interface';
 import { SkyToastService } from '../../../services/common/toast/toast.service';
 import { TextInputModalComponent } from '../../common/text-input-modal/text-input-modal.component';
 import { NumberInputModalComponent } from '../../common/number-input-modal/number-input-modal.component';
+import { Supplier } from '../../../services/common/model/supplier';
+import { SupplierListComponent } from '../../supplier/supplier-list/supplier-list';
 
 /**
  * Generated class for the StockAddPage page.
@@ -24,24 +26,26 @@ import { NumberInputModalComponent } from '../../common/number-input-modal/numbe
 export class StockAddPage implements OnInit {
 
   stock: Stock = new Stock();
+  supplier: Supplier = new Supplier();
   loading: any;
   stockId: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalController: ModalController,
-    private stockInterface: StockInterface,private toast: SkyToastService, private loadingController: LoadingController) {
+    private stockInterface: StockInterface, private toast: SkyToastService, private loadingController: LoadingController) {
   }
 
   ngOnInit() {
     this.stockId = this.navParams.get('stockId');
-    if(this.stockId){
+    if (this.stockId) {
       this.loading = this.loadingController.create({
         content: '查询中...'
       });
       this.loading.present();
       this.stockInterface.queryStockById(this.stockId).subscribe(
-        (stock) => {
+        (stockDto) => {
           this.loading.dismiss();
-          this.stock = stock;
+          this.stock = stockDto.stock;
+          this.supplier = stockDto.supplier;
         },
         () => {
           this.loading.dismiss();
@@ -88,15 +92,35 @@ export class StockAddPage implements OnInit {
     numberInputModal.present();
   }
 
+  /** 
+   * 选择供应商
+  */
+  selectSupplier() {
+    const supplierSelectModal = this.modalController.create(SupplierListComponent, {
+
+    }, {
+        showBackdrop: true,
+        enableBackdropDismiss: false
+      });
+    supplierSelectModal.onDidDismiss(data => {
+      if (data) {
+        this.stock.supplierId = data.id;
+        this.supplier = data;
+      }
+    }
+    );
+    supplierSelectModal.present();
+  }
+
   /**
    * 保存
    */
-  save(){
+  save() {
     this.loading = this.loadingController.create({
       content: '保存中...'
     });
     this.loading.present();
-    if(!this.stockId){
+    if (!this.stockId) {
       this.stockInterface.addStock(this.stock).subscribe(
         () => {
           this.loading.dismiss();
@@ -108,14 +132,14 @@ export class StockAddPage implements OnInit {
           this.toast.show('保存失败');
         }
       );
-    }else{
+    } else {
       this.stockInterface.updateStock(this.stock).subscribe(
         () => {
           this.loading.dismiss();
           this.toast.show('更新成功');
           this.navCtrl.push('stock-search');
         },
-        (data) => {  
+        (data) => {
           this.loading.dismiss();
           this.toast.show('更新失败');
         }

@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ServerUrl } from '../../../global';
 import { JsonUtil } from '../util/json-util';
 import { Stock } from '../model/stock';
+import { StockDTO } from '../../../pages/stock/stock-add/stock-dto';
 
 @Injectable()
 export class StockInterface {
@@ -30,7 +31,7 @@ export class StockInterface {
    */
   queryStockById(id: number) {
     return this.http.get(ServerUrl.SERVER_URL + '/stocks/' + id)
-      .map(resp => JsonUtil.jsonConvert(resp, Stock));
+      .map(resp => JsonUtil.jsonConvert(resp, StockDTO));
   }
 
   /**
@@ -48,10 +49,10 @@ export class StockInterface {
    * 根据时间搜索
    */
   queryStocksByTime(startTime: number, endTime: number) {
-    const params = new HttpParams().set('startTime', startTime.toString()).set('endTime', endTime.toString()).set('type', 'name');
+    const params = new HttpParams().set('startTime', startTime.toString()).set('endTime', endTime.toString()).set('type', 'time');
     return this.http.get(ServerUrl.SERVER_URL + '/stocks', { params: params })
-      .map((resp: Stock[]) => {
-        return resp.map(item => JsonUtil.jsonConvert(item, Stock));
+      .map((resp: StockDTO[]) => {
+        return resp.map(item => JsonUtil.jsonConvert(item, StockDTO));
       });
   }
 

@@ -43,6 +43,11 @@ export class MorePage {
   go2Stock(){
     this.navCtrl.push('stock');
   }
+
+  //去供应商页面
+  go2Supplier(){
+    this.navCtrl.push('supplier');
+  }
   
   //退出登录
   logout() {

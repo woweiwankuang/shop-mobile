@@ -89,8 +89,11 @@ export class StockExportPage {
           filedName: 'specification',
           name: '规格'
         }, {
-          filedName: 'supplier',
-          name: '供应商'
+          filedName: 'supplierName',
+          name: '供应商名称'
+        }, {
+          filedName: 'supplierPhoneNum',
+          name: '供应商电话'
         }, {
           filedName: 'createTime',
           name: '记录时间'
@@ -98,14 +101,15 @@ export class StockExportPage {
 
         let data = [];
 
-        stocks.forEach(stock => {
+        stocks.forEach(stockDto => {
           data.push({
-            name: stock.name,
-            num: stock.num.toString(),
-            price: stock.price.toString(),
-            specification: stock.specification? stock.specification:'',
-            supplier: stock.supplier? stock.supplier:'',
-            createTime: this.datePipe.transform(stock.createTime, 'yyyy-MM-dd HH:mm')
+            name: stockDto.stock.name,
+            num: stockDto.stock.num.toString(),
+            price: stockDto.stock.price.toString(),
+            specification: stockDto.stock.specification ? stockDto.stock.specification : '',
+            supplierName: stockDto.supplier ? stockDto.supplier.name : '',
+            supplierPhoneNum: stockDto.supplier ? stockDto.supplier.phoneNum : '',
+            createTime: this.datePipe.transform(stockDto.stock.createTime, 'yyyy-MM-dd HH:mm')
           });
         });
 

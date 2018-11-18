@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { StockAddPage } from './stock-add';
+import { CommonCompoentModule } from '../../common/common-component.module';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { StockAddPage } from './stock-add';
   ],
   imports: [
     IonicPageModule.forChild(StockAddPage),
+    CommonCompoentModule
   ],
   exports: [
     StockAddPage

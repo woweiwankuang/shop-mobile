@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar hideBackButton="true" color="light">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="killMyself()" class="back-btn">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>选择供应商</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content ngClass="text-input-modal" class="supplier-list">
+    <div class="search-box">
+        <ion-input type="text" [(ngModel)]="keyword" placeholder="请输入姓名进行查询"></ion-input>
+        <ion-icon name="search" (click)="search()">查询</ion-icon>
+    </div>
+    <ion-list class="supplier-list" *ngIf="suppliers&&suppliers.length > 0">
+        <button ion-item *ngFor="let supplier of suppliers" (click)="selectSupplier(supplier)">
+            {{ supplier.name }}--{{supplier.phoneNum}}
+        </button>
+    </ion-list>
+    <p *ngIf="!suppliers||suppliers.length === 0">没有内容了~</p>
+</ion-content>
