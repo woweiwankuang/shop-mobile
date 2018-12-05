@@ -29,6 +29,7 @@ export class StockAddPage implements OnInit {
   supplier: Supplier = new Supplier();
   loading: any;
   stockId: number;
+  singlePrice: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalController: ModalController,
     private stockInterface: StockInterface, private toast: SkyToastService, private loadingController: LoadingController) {
@@ -46,6 +47,7 @@ export class StockAddPage implements OnInit {
           this.loading.dismiss();
           this.stock = stockDto.stock;
           this.supplier = stockDto.supplier;
+          this.singlePrice = Number((this.stock.price / this.stock.num).toFixed(1));
         },
         () => {
           this.loading.dismiss();
@@ -86,6 +88,31 @@ export class StockAddPage implements OnInit {
     numberInputModal.onDidDismiss(data => {
       if (data || data === 0) {
         this.stock[name] = data;
+      }
+      if(this.singlePrice && this.stock.num) {
+        this.stock.price = Number((this.singlePrice * this.stock.num).toFixed(1));
+      }
+    }
+    );
+    numberInputModal.present();
+  }
+
+  /**
+   * 设置单价
+   */
+  changeSinglePrice() {
+    const numberInputModal = this.modalController.create(NumberInputModalComponent, {
+      number: this.singlePrice
+    }, {
+        showBackdrop: true,
+        enableBackdropDismiss: false
+      });
+    numberInputModal.onDidDismiss(data => {
+      if (data || data === 0) {
+        this.singlePrice = data;
+      }
+      if(this.singlePrice && this.stock.num) {
+        this.stock.price = Number((this.singlePrice * this.stock.num).toFixed(1));
       }
     }
     );

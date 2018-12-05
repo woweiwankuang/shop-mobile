@@ -29,9 +29,15 @@
   </div>
 
   <div class="create-item">
-    <span class="item-name">总价</span>
-    <span class="item-operation" (click)="inputNumber('price')">{{stock.price?stock.price:'请输入'}}
+    <span class="item-name">单价</span>
+    <span class="item-operation" (click)="changeSinglePrice()">{{singlePrice?singlePrice:'请输入'}}
       <ion-icon name="arrow-dropright"></ion-icon>
+    </span>
+  </div>
+
+  <div class="create-item">
+    <span class="item-name">总价</span>
+    <span class="item-operation">{{stock.price?stock.price:''}}
     </span>
   </div>
 

@@ -9,7 +9,7 @@ import { SkyToastService } from '../../../services/common/toast/toast.service';
 })
 export class NumberInputModalComponent implements OnInit, AfterViewChecked {
 
-  reg: RegExp = /^\d{1,4}(\.\d{1})?$/;
+  reg: RegExp = /^\d{1,6}(\.\d{1})?$/;
 
   learnCertNumber: number;
 
@@ -43,7 +43,7 @@ export class NumberInputModalComponent implements OnInit, AfterViewChecked {
       this.viewController.dismiss(this.learnCertNumber);
       this.viewController = null;
     } else {
-      this.toast.show('请输入10000以下数，最多保留一位小数');
+      this.toast.show('请输入1000000以下数，最多保留一位小数');
     }
   }
 

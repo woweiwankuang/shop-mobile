@@ -83,6 +83,9 @@ export class StockExportPage {
           filedName: 'num',
           name: '数量'
         }, {
+          filedName: 'singlePrice',
+          name: '单价'
+        }, {
           filedName: 'price',
           name: '总价'
         }, {
@@ -105,6 +108,7 @@ export class StockExportPage {
           data.push({
             name: stockDto.stock.name,
             num: stockDto.stock.num.toString(),
+            singlePrice: (stockDto.stock.price / stockDto.stock.num).toFixed(1),
             price: stockDto.stock.price.toString(),
             specification: stockDto.stock.specification ? stockDto.stock.specification : '',
             supplierName: stockDto.supplier ? stockDto.supplier.name : '',
