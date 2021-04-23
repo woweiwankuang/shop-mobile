@@ -19,7 +19,7 @@ steps:
         - push
 
   - name: build
-    image: node:8.15
+    image: ionic-buildenv:1.0
     volumes:
       - name: app-config
         path: /root/app-config
