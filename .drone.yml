@@ -28,10 +28,11 @@ steps:
       - npm install
       - cp -f /root/app-config/global.ts  src/global.ts
       - ionic build --prod
-      - ls
+      - cp www /root/app-config/shop-mobile-dist
       - mkdir context
       - mv www context/dist
       - mv Dockerfile context/Dockerfile
+      - cp /root/app-config/nginx.conf  context/nginx.conf
     when:
       branch:
         - master
