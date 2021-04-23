@@ -28,7 +28,7 @@ steps:
       - npm install
       - cp -f /root/app-config/global.ts  src/global.ts
       - ionic build --prod
-      - cp www /root/app-config/shop-mobile-dist
+      - cp -r www /root/app-config/shop-mobile-dist
       - mkdir context
       - mv www context/dist
       - mv Dockerfile context/Dockerfile
