@@ -26,7 +26,7 @@ steps:
     commands:
       - npm install
       - cp -f /root/app-config/global.ts  src/global.ts
-      - ionic build --prod
+      - ionic build
       - cp -r www /root/app-config/shop-mobile-dist
       - mkdir context
       - mv www context/dist
